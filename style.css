@@ -52,3 +52,28 @@ body {
   .collections-grid { grid-template-columns: 1fr; }
   .site-header, .collections-grid { padding-left: 24px; padding-right: 24px; }
 }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-bottom: 1px solid #222;
+}
+
+nav div:first-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  color: inherit;
+  text-decoration: none;
+}
+
+nav a:hover {
+  opacity: 1;
+}
