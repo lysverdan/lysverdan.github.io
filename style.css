@@ -70,4 +70,22 @@ p {
   height: auto;
   display: block;
 }
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.collection-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.collection-card h3 {
+  margin-top: 0.75rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+}
 
