@@ -7,10 +7,9 @@
 
 /* BASE */
 body {
-  background-color: #000;
+  background: #000;
   color: #f5f5f5;
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
 }
 
 a {
@@ -39,10 +38,6 @@ nav a {
   opacity: 0.8;
 }
 
-nav a:hover {
-  opacity: 1;
-}
-
 /* LAYOUT */
 .container {
   max-width: 1200px;
@@ -53,19 +48,16 @@ nav a:hover {
 h1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
+  margin-bottom: 3rem;
 }
 
-/* COLLECTIONS GRID */
+/* COLLECTIONS */
 .collections-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
-  margin-top: 3rem;
   max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .collection-card {
@@ -74,20 +66,19 @@ h1 {
 
 .collection-card img {
   width: 100%;
-  max-width: 480px;
+  max-width: 420px;
   height: auto;
-  display: block;
   margin: 0 auto;
+  display: block;
 }
 
-.collection-card figcaption {
+.collection-title {
   margin-top: 0.75rem;
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.4rem;
-  letter-spacing: 0.03em;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 900px) {
   .collections-grid {
     grid-template-columns: 1fr;
