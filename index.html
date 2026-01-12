@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Photography Portfolio</title>
+    <title>Lys Verdan Art - Fine Art Photography</title>
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@
 
         /* Header */
         header {
-            padding: 60px 40px;
+            padding: 80px 40px 40px 40px;
             text-align: center;
             border-bottom: 1px solid #222;
             background-color: #000000;
@@ -36,8 +36,8 @@
         h1 {
             font-size: 3.5rem;
             font-weight: 200;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
+            letter-spacing: 12px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
 
@@ -46,6 +46,7 @@
             letter-spacing: 3px;
             color: #999;
             font-weight: 300;
+            font-style: italic;
         }
 
         /* Navigation */
@@ -54,6 +55,25 @@
             text-align: center;
             border-bottom: 1px solid #222;
             background-color: #000000;
+        }
+
+        .nav-links {
+            margin-bottom: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .nav-links a:hover {
+            color: #999;
         }
 
         .filter-btn {
@@ -80,6 +100,31 @@
             background-color: #fff;
             color: #000;
             border-color: #fff;
+        }
+
+        /* Collection Header */
+        .collection-header {
+            padding: 60px 40px 40px 40px;
+            text-align: center;
+            background-color: #000000;
+        }
+
+        .collection-title {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .collection-description {
+            font-size: 1.1rem;
+            color: #999;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+            font-style: italic;
         }
 
         /* Gallery */
@@ -123,7 +168,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
             padding: 30px;
             transform: translateY(0);
             transition: transform 0.4s ease;
@@ -136,7 +181,7 @@
         .gallery-item-title {
             font-size: 1.2rem;
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 300;
         }
 
@@ -145,6 +190,27 @@
             color: #999;
             letter-spacing: 1px;
             text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .buy-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            margin-top: 10px;
+        }
+
+        .buy-btn:hover {
+            background: #000;
+            color: #fff;
+            border: 1px solid #fff;
         }
 
         /* Lightbox */
@@ -155,7 +221,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.97);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -219,12 +285,67 @@
             right: 30px;
         }
 
-        .lightbox-caption {
+        .lightbox-info {
             text-align: center;
-            margin-top: 20px;
-            font-size: 1.1rem;
+            margin-top: 30px;
+        }
+
+        .lightbox-title {
+            font-size: 1.3rem;
             letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .lightbox-category {
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .lightbox-buy-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 15px 40px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .lightbox-buy-btn:hover {
+            background: #000;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #000000;
+            border-top: 1px solid #222;
+        }
+
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.1rem;
+            line-height: 2;
             color: #ccc;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
         /* Footer */
@@ -240,6 +361,24 @@
             color: #666;
             font-size: 0.9rem;
             letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
         }
 
         /* Fade in animation */
@@ -260,11 +399,18 @@
         .gallery-item:nth-child(4) { animation-delay: 0.4s; }
         .gallery-item:nth-child(5) { animation-delay: 0.5s; }
         .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
 
         /* Responsive */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .collection-title {
+                font-size: 1.8rem;
                 letter-spacing: 4px;
             }
 
@@ -276,6 +422,11 @@
                 padding: 10px 20px;
                 margin: 5px;
                 font-size: 0.8rem;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 15px 0;
             }
 
             .lightbox-nav {
@@ -293,117 +444,207 @@
 </head>
 <body>
     <header>
-        <h1>Your Name</h1>
-        <p class="tagline">Fine Art Photography</p>
+        <h1>Lys Verdan</h1>
+        <p class="tagline">Painterly Photography from Coastal Nova Scotia</p>
     </header>
 
     <nav>
+        <div class="nav-links">
+            <a href="#gallery">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="landscapes">Landscapes</button>
-        <button class="filter-btn" data-filter="portraits">Portraits</button>
-        <button class="filter-btn" data-filter="urban">Urban</button>
-        <button class="filter-btn" data-filter="abstract">Abstract</button>
+        <button class="filter-btn" data-filter="winter">Chester Winter</button>
+        <button class="filter-btn" data-filter="summer">Chester Summer</button>
     </nav>
 
-    <div class="gallery-container">
-        <div class="gallery" id="gallery">
-            <!-- Landscape Images -->
-            <div class="gallery-item" data-category="landscapes">
-                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop" alt="Mountain Vista">
+    <div class="collection-header">
+        <h2 class="collection-title">Chester, Nova Scotia</h2>
+        <p class="collection-description">
+            Where sea meets sky in ever-changing light. Each piece captures a moment, then transforms it—
+            painting with pixels, blurring the line between photograph and canvas. 
+            This is Chester through an artist's eye: timeless, dreamlike, deeply personal.
+        </p>
+    </div>
+
+    <div class="gallery-container" id="gallery">
+        <div class="gallery">
+            <!-- Winter Collection -->
+            <div class="gallery-item" data-category="winter">
+                <img src="images/covers/Chester Winter (1).png" alt="Chester Winter 1">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Mountain Vista</div>
-                    <div class="gallery-item-category">Landscapes</div>
+                    <div class="gallery-item-title">Winter Stillness I</div>
+                    <div class="gallery-item-category">Chester Winter</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=1000&fit=crop" alt="Portrait Study">
+            <div class="gallery-item" data-category="winter">
+                <img src="images/covers/Chester Winter (2).png" alt="Chester Winter 2">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Portrait Study</div>
-                    <div class="gallery-item-category">Portraits</div>
+                    <div class="gallery-item-title">Winter Stillness II</div>
+                    <div class="gallery-item-category">Chester Winter</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="urban">
-                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=1000&fit=crop" alt="City Nights">
+            <div class="gallery-item" data-category="winter">
+                <img src="images/covers/Chester Winter (3).png" alt="Chester Winter 3">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">City Nights</div>
-                    <div class="gallery-item-category">Urban</div>
+                    <div class="gallery-item-title">Winter Stillness III</div>
+                    <div class="gallery-item-category">Chester Winter</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="abstract">
-                <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&h=1000&fit=crop" alt="Color Study">
+            <div class="gallery-item" data-category="winter">
+                <img src="images/covers/Chester Winter (7).png" alt="Chester Winter 7">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Color Study</div>
-                    <div class="gallery-item-category">Abstract</div>
+                    <div class="gallery-item-title">Frozen Harbor</div>
+                    <div class="gallery-item-category">Chester Winter</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="landscapes">
-                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=1000&fit=crop" alt="Coastal Dream">
+            <!-- Summer Collection -->
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (1).png" alt="Chester Summer 1">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Coastal Dream</div>
-                    <div class="gallery-item-category">Landscapes</div>
+                    <div class="gallery-item-title">Summer Light I</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&h=1000&fit=crop" alt="Natural Light">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (2).png" alt="Chester Summer 2">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Natural Light</div>
-                    <div class="gallery-item-category">Portraits</div>
+                    <div class="gallery-item-title">Summer Light II</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="urban">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=1000&fit=crop" alt="Architecture">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (3).png" alt="Chester Summer 3">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Architecture</div>
-                    <div class="gallery-item-category">Urban</div>
+                    <div class="gallery-item-title">Summer Light III</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="abstract">
-                <img src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&h=1000&fit=crop" alt="Reflections">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (4).png" alt="Chester Summer 4">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Coastal Morning</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (7).png" alt="Chester Summer 7">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Harbor Dreams</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (9).png" alt="Chester Summer 9">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Tidal Rhythm</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (11).png" alt="Chester Summer 11">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Sea and Stone</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (12).png" alt="Chester Summer 12">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Evening Tide</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (15).png" alt="Chester Summer 15">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Golden Shore</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (16).png" alt="Chester Summer 16">
                 <div class="gallery-item-overlay">
                     <div class="gallery-item-title">Reflections</div>
-                    <div class="gallery-item-category">Abstract</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="landscapes">
-                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=1000&fit=crop" alt="Golden Hour">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (17).png" alt="Chester Summer 17">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Golden Hour</div>
-                    <div class="gallery-item-category">Landscapes</div>
+                    <div class="gallery-item-title">Maritime Peace</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="urban">
-                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=1000&fit=crop" alt="Street Scene">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/Chester Summer (24).png" alt="Chester Summer 24">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Street Scene</div>
-                    <div class="gallery-item-category">Urban</div>
+                    <div class="gallery-item-title">Sunset Harbor</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop" alt="Expression">
+            <div class="gallery-item" data-category="summer">
+                <img src="images/covers/cover-2.png" alt="Chester Cover">
                 <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Expression</div>
-                    <div class="gallery-item-category">Portraits</div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="abstract">
-                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=1000&fit=crop" alt="Light Play">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Light Play</div>
-                    <div class="gallery-item-category">Abstract</div>
+                    <div class="gallery-item-title">Chester Essence</div>
+                    <div class="gallery-item-category">Chester Summer</div>
+                    <button class="buy-btn" onclick="window.location.href='#'">Buy Print</button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-section" id="about">
+        <h2>About the Artist</h2>
+        <p>
+            Lys Verdan creates painterly photographs that exist between two worlds—the captured moment and the reimagined scene. 
+            Working from the rugged coastline of Chester, Nova Scotia, each piece begins with observation: the way light moves across water, 
+            how weather transforms landscape, the quiet drama of seasonal change.
+        </p>
+        <p>
+            What follows is transformation. Through meticulous digital manipulation, photographs become paintings. Colors deepen, 
+            textures emerge, reality softens into something more visceral, more emotional. The result feels both familiar and dreamlike—
+            coastal Nova Scotia as you've never quite seen it, yet always sensed it could be.
+        </p>
+        <p>
+            This is fine art photography for those who seek something beyond documentation. Each limited edition print invites you 
+            to see the maritime landscape through an artist's eye, where every frame is both a photograph and a painting, 
+            neither and both at once.
+        </p>
     </div>
 
     <!-- Lightbox -->
@@ -413,12 +654,21 @@
         <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
         <div class="lightbox-content">
             <img src="" alt="" id="lightbox-img">
-            <div class="lightbox-caption" id="lightbox-caption"></div>
+            <div class="lightbox-info">
+                <div class="lightbox-title" id="lightbox-title"></div>
+                <div class="lightbox-category" id="lightbox-category"></div>
+                <button class="lightbox-buy-btn" id="lightbox-buy-btn">Buy Print</button>
+            </div>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 LYS VERDAN Photography. All Rights Reserved.</p>
+    <footer id="contact">
+        <p>&copy; 2026 Lys Verdan Art. All Rights Reserved.</p>
+        <p>Limited Edition Prints Available</p>
+        <div class="social-links">
+            <a href="https://instagram.com/lysverdanart" target="_blank">Instagram</a>
+            <a href="mailto:contact@lysverdanart.com">Email</a>
+        </div>
     </footer>
 
     <script>
@@ -428,9 +678,7 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 btn.classList.add('active');
 
                 const filter = btn.getAttribute('data-filter');
@@ -449,7 +697,9 @@
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxCategory = document.getElementById('lightbox-category');
+        const lightboxBuyBtn = document.getElementById('lightbox-buy-btn');
         const lightboxClose = document.getElementById('lightbox-close');
         const lightboxPrev = document.getElementById('lightbox-prev');
         const lightboxNext = document.getElementById('lightbox-next');
@@ -462,7 +712,8 @@
         }
 
         galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
+            const itemImg = item.querySelector('img');
+            itemImg.addEventListener('click', () => {
                 updateVisibleImages();
                 currentImageIndex = visibleImages.indexOf(item);
                 openLightbox(item);
@@ -475,7 +726,8 @@
             const category = item.querySelector('.gallery-item-category').textContent;
 
             lightboxImg.src = img.src;
-            lightboxCaption.textContent = `${title} - ${category}`;
+            lightboxTitle.textContent = title;
+            lightboxCategory.textContent = category;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
