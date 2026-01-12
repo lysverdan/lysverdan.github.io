@@ -1,28 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lys Verdan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Photography Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+        html {
+            background-color: #000000 !important;
+            color-scheme: dark;
+        }
+
+        body {
+            background-color: #000000 !important;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 40px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            background-color: #000000;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 200;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: #999;
+            font-weight: 300;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 40px 40px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+            background-color: #000000;
+        }
+
+        .filter-btn {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 12px 30px;
+            margin: 0 10px 10px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .filter-btn:hover {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .filter-btn.active {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            padding: 60px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #000000;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/5;
+            transition: all 0.5s ease;
+            background-color: #1a1a1a;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
+            transform: translateY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item-title {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            font-weight: 300;
+        }
+
+        .gallery-item-category {
+            font-size: 0.85rem;
+            color: #999;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            opacity: 0.7;
+        }
+
+        .lightbox-prev {
+            left: 30px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 1px solid #222;
+            margin-top: 80px;
+            background-color: #000000;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        /* Fade in animation */
+        .gallery-item {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 4px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                margin: 5px;
+                font-size: 0.8rem;
+            }
+
+            .lightbox-nav {
+                font-size: 2rem;
+                padding: 10px;
+            }
+
+            .lightbox-close {
+                font-size: 2rem;
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <nav>
-    <div>Lys Verdan</div>
-    <div>
-      <a href="collections.html">Collections</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
+    <header>
+        <h1>Your Name</h1>
+        <p class="tagline">Fine Art Photography</p>
+    </header>
 
-  <div class="container">
-    <h1>Selected Works</h1>
-    <p>A curated preview. Explore full collections and inquire for originals, prints, and digital editions.</p>
-  </div>
+    <nav>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+        <button class="filter-btn" data-filter="portraits">Portraits</button>
+        <button class="filter-btn" data-filter="urban">Urban</button>
+        <button class="filter-btn" data-filter="abstract">Abstract</button>
+    </nav>
+
+    <div class="gallery-container">
+        <div class="gallery" id="gallery">
+            <!-- Landscape Images -->
+            <div class="gallery-item" data-category="landscapes">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1000&fit=crop" alt="Mountain Vista">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Mountain Vista</div>
+                    <div class="gallery-item-category">Landscapes</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&h=1000&fit=crop" alt="Portrait Study">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Portrait Study</div>
+                    <div class="gallery-item-category">Portraits</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="urban">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=800&h=1000&fit=crop" alt="City Nights">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">City Nights</div>
+                    <div class="gallery-item-category">Urban</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="abstract">
+                <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&h=1000&fit=crop" alt="Color Study">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Color Study</div>
+                    <div class="gallery-item-category">Abstract</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="landscapes">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=1000&fit=crop" alt="Coastal Dream">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Coastal Dream</div>
+                    <div class="gallery-item-category">Landscapes</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&h=1000&fit=crop" alt="Natural Light">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Natural Light</div>
+                    <div class="gallery-item-category">Portraits</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="urban">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&h=1000&fit=crop" alt="Architecture">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Architecture</div>
+                    <div class="gallery-item-category">Urban</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="abstract">
+                <img src="https://images.unsplash.com/photo-1550859492-d5da9d8e45f3?w=800&h=1000&fit=crop" alt="Reflections">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Reflections</div>
+                    <div class="gallery-item-category">Abstract</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="landscapes">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&h=1000&fit=crop" alt="Golden Hour">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Golden Hour</div>
+                    <div class="gallery-item-category">Landscapes</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="urban">
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&h=1000&fit=crop" alt="Street Scene">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Street Scene</div>
+                    <div class="gallery-item-category">Urban</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop" alt="Expression">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Expression</div>
+                    <div class="gallery-item-category">Portraits</div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="abstract">
+                <img src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?w=800&h=1000&fit=crop" alt="Light Play">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Light Play</div>
+                    <div class="gallery-item-category">Abstract</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Your Name Photography. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach((item, index) => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = `fadeIn 0.6s ease ${index * 0.1}s forwards`;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentImageIndex = 0;
+        let visibleImages = [];
+
+        function updateVisibleImages() {
+            visibleImages = Array.from(galleryItems).filter(item => item.style.display !== 'none');
+        }
+
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateVisibleImages();
+                currentImageIndex = visibleImages.indexOf(item);
+                openLightbox(item);
+            });
+        });
+
+        function openLightbox(item) {
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-item-title').textContent;
+            const category = item.querySelector('.gallery-item-category').textContent;
+
+            lightboxImg.src = img.src;
+            lightboxCaption.textContent = `${title} - ${category}`;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
+            openLightbox(visibleImages[currentImageIndex]);
+        }
+
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
+            openLightbox(visibleImages[currentImageIndex]);
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightboxPrev.addEventListener('click', showPrevImage);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNextImage();
+            if (e.key === 'ArrowLeft') showPrevImage();
+        });
+
+        // Initialize visible images
+        updateVisibleImages();
+    </script>
 </body>
 </html>
-
