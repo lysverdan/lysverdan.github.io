@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Bar Cart - Lys Verdan Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html, body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        header {
+            padding: 60px 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .collection-subtitle {
+            font-size: 1rem;
+            color: #999;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        nav {
+            padding: 30px 40px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        nav a:hover {
+            color: #999;
+        }
+
+        .gallery-container {
+            padding: 60px 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #1a1a1a;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.9);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            padding: 30px;
+        }
+
+        .gallery-item-title {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 300;
+        }
+
+        .buy-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 25px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .buy-btn:hover {
+            background: #000;
+            color: #fff;
+            border: 1px solid #fff;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.97);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 1001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 20px;
+        }
+
+        .lightbox-prev {
+            left: 30px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 40px 60px;
+            border-top: 1px solid #222;
+            margin-top: 100px;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+
+            nav a {
+                display: block;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bar Cart</h1>
+        <p class="collection-subtitle">3 Pieces</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="gallery-container">
+        <div class="gallery">
+
+            <!-- PHOTO START -->
+            <div class="gallery-item">
+                <img src="images/covers/BarCart (1).png" alt="Still Life I">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Still Life I</div>
+                    <button class="buy-btn">Buy Print</button>
+                </div>
+            </div>
+            <!-- PHOTO END -->
+
+            <!-- PHOTO START -->
+            <div class="gallery-item">
+                <img src="images/covers/BarCart (3).png" alt="Glass and Shadow">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Glass and Shadow</div>
+                    <button class="buy-btn">Buy Print</button>
+                </div>
+            </div>
+            <!-- PHOTO END -->
+
+            <!-- PHOTO START -->
+            <div class="gallery-item">
+                <img src="images/covers/BarCart (4).png" alt="Amber Light">
+                <div class="gallery-item-overlay">
+                    <div class="gallery-item-title">Amber Light</div>
+                    <button class="buy-btn">Buy Print</button>
+                </div>
+            </div>
+            <!-- PHOTO END -->
+
+        </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-img">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lys Verdan Art. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        let currentIndex = 0;
+
+        galleryItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            img.addEventListener('click', () => {
+                currentIndex = index;
+                openLightbox(img.src);
+            });
+        });
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+            const nextImg = galleryItems[currentIndex].querySelector('img');
+            lightboxImg.src = nextImg.src;
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+            const prevImg = galleryItems[currentIndex].querySelector('img');
+            lightboxImg.src = prevImg.src;
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxNext.addEventListener('click', showNext);
+        lightboxPrev.addEventListener('click', showPrev);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
+        });
+    </script>
+</body>
+</html>
