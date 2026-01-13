@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Lys Verdan Art - Fine Art Photography</title>
+    <title>Lys Verdan Art</title>
     <style>
         * {
             margin: 0;
@@ -12,36 +12,27 @@
             box-sizing: border-box;
         }
 
-        html {
-            background-color: #000000 !important;
-            color-scheme: dark;
-        }
-
-        body {
-            background-color: #000000 !important;
+        html, body {
+            background-color: #000000;
             color: #ffffff;
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            overflow-x: hidden;
-            min-height: 100vh;
         }
 
         header {
-            padding: 80px 40px 40px 40px;
+            padding: 60px 40px 30px;
             text-align: center;
-            border-bottom: 1px solid #222;
-            background-color: #000000;
         }
 
         h1 {
             font-size: 3.5rem;
             font-weight: 200;
             letter-spacing: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .tagline {
-            font-size: 1rem;
+            font-size: 0.95rem;
             letter-spacing: 3px;
             color: #999;
             font-weight: 300;
@@ -49,20 +40,15 @@
         }
 
         nav {
-            padding: 40px;
+            padding: 30px 40px;
             text-align: center;
             border-bottom: 1px solid #222;
-            background-color: #000000;
         }
 
-        .nav-links {
-            margin-bottom: 30px;
-        }
-
-        .nav-links a {
+        nav a {
             color: #fff;
             text-decoration: none;
-            margin: 0 20px;
+            margin: 0 25px;
             font-size: 0.9rem;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -70,280 +56,89 @@
             font-weight: 300;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: #999;
         }
 
-        .filter-btn {
-            background: transparent;
-            color: #fff;
-            border: 1px solid #444;
-            padding: 12px 30px;
-            margin: 0 10px 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            font-weight: 300;
-        }
-
-        .filter-btn:hover {
-            background-color: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-
-        .filter-btn.active {
-            background-color: #fff;
-            color: #000;
-            border-color: #fff;
-        }
-
-        .collection-header {
-            padding: 60px 40px 40px;
-            text-align: center;
-            background-color: #000000;
-        }
-
-        .collection-title {
-            font-size: 2.5rem;
-            font-weight: 200;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .collection-description {
-            font-size: 1.1rem;
-            color: #999;
-            max-width: 800px;
+        .collections-container {
+            padding: 80px 40px;
+            max-width: 1600px;
             margin: 0 auto;
-            line-height: 1.8;
-            font-weight: 300;
-            font-style: italic;
         }
 
-        .gallery-container {
-            padding: 60px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            background-color: #000000;
-        }
-
-        .gallery {
+        .collections-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+            margin-bottom: 80px;
         }
 
-        .gallery-item {
+        .collection-tile {
             position: relative;
-            overflow: hidden;
-            cursor: pointer;
             aspect-ratio: 4/5;
-            transition: all 0.5s ease;
-            background-color: #1a1a1a;
+            overflow: hidden;
+            display: block;
+            transition: transform 0.3s ease;
         }
 
-        .gallery-item img {
+        .collection-tile:hover {
+            transform: scale(1.02);
+        }
+
+        .collection-tile img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
-            filter: brightness(0.9);
+            filter: brightness(0.85);
+            transition: filter 0.3s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.05);
+        .collection-tile:hover img {
             filter: brightness(1);
         }
 
-        .gallery-item-overlay {
+        .collection-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
-            padding: 30px;
-            transform: translateY(0);
-            transition: transform 0.4s ease;
-        }
-
-        .gallery-item-title {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            font-weight: 300;
-        }
-
-        .gallery-item-category {
-            font-size: 0.85rem;
-            color: #999;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .buy-btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 10px 25px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 400;
-            margin-top: 10px;
-        }
-
-        .buy-btn:hover {
-            background: #000;
-            color: #fff;
-            border: 1px solid #fff;
-        }
-
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.97);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            position: relative;
-        }
-
-        .lightbox-content img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 3rem;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: transform 0.3s ease;
-            z-index: 1001;
-        }
-
-        .lightbox-close:hover {
-            transform: rotate(90deg);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 3rem;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 20px;
-            transition: opacity 0.3s ease;
-        }
-
-        .lightbox-nav:hover {
-            opacity: 0.7;
-        }
-
-        .lightbox-prev {
-            left: 30px;
-        }
-
-        .lightbox-next {
-            right: 30px;
-        }
-
-        .lightbox-info {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 40px;
             text-align: center;
-            margin-top: 30px;
         }
 
-        .lightbox-title {
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .lightbox-category {
-            font-size: 0.9rem;
-            color: #999;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        .lightbox-buy-btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 15px 40px;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-
-        .lightbox-buy-btn:hover {
-            background: #000;
-            color: #fff;
-            border: 1px solid #fff;
-        }
-
-        .about-section {
-            padding: 80px 40px;
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: #000000;
-            border-top: 1px solid #222;
-        }
-
-        .about-section h2 {
-            font-size: 2rem;
+        .collection-title {
+            font-size: 1.8rem;
             font-weight: 200;
             letter-spacing: 6px;
-            margin-bottom: 40px;
             text-transform: uppercase;
-            text-align: center;
+            margin-bottom: 8px;
+            color: #fff;
         }
 
-        .about-section p {
-            font-size: 1.1rem;
+        .collection-count {
+            font-size: 0.85rem;
+            color: #999;
+            letter-spacing: 2px;
+        }
+
+        .statement {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 40px;
+            font-size: 1.15rem;
             line-height: 2;
             color: #ccc;
-            margin-bottom: 30px;
             font-weight: 300;
+            font-style: italic;
         }
 
         footer {
             text-align: center;
-            padding: 60px 40px;
+            padding: 80px 40px 60px;
             border-top: 1px solid #222;
-            margin-top: 80px;
-            background-color: #000000;
+            margin-top: 100px;
         }
 
         footer p {
@@ -370,48 +165,36 @@
             color: #fff;
         }
 
-        .gallery-item {
-            opacity: 0;
-            animation: fadeIn 0.6s ease forwards;
-        }
+        @media (max-width: 1024px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 8px;
+            }
+
+            .collection-title {
+                font-size: 1.5rem;
+                letter-spacing: 4px;
             }
         }
-
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
 
         @media (max-width: 768px) {
             h1 {
                 font-size: 2rem;
-                letter-spacing: 4px;
+                letter-spacing: 6px;
             }
 
-            .collection-title {
-                font-size: 1.8rem;
-                letter-spacing: 4px;
-            }
-
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .filter-btn {
-                padding: 10px 20px;
-                margin: 5px;
-                font-size: 0.8rem;
-            }
-
-            .nav-links a {
+            nav a {
                 display: block;
                 margin: 15px 0;
+            }
+
+            .statement {
+                font-size: 1rem;
             }
         }
     </style>
@@ -423,306 +206,50 @@
     </header>
 
     <nav>
-        <div class="nav-links">
-            <a href="#gallery">Gallery</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="winter">Chester Winter</button>
-        <button class="filter-btn" data-filter="summer">Chester Summer</button>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="collection-header">
-        <h2 class="collection-title">Chester, Nova Scotia</h2>
-        <p class="collection-description">
-            Where sea meets sky in ever-changing light. Each piece captures a moment, then transforms it—painting with pixels, blurring the line between photograph and canvas. This is Chester through an artist's eye: timeless, dreamlike, deeply personal.
-        </p>
-    </div>
-
-    <div class="gallery-container" id="gallery">
-        <div class="gallery">
-            <div class="gallery-item" data-category="winter">
-                <img src="images/covers/Chester Winter (1).png" alt="Chester Winter 1">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Winter Stillness I</div>
-                    <div class="gallery-item-category">Chester Winter</div>
-                    <button class="buy-btn">Buy Print</button>
+    <div class="collections-container">
+        <div class="collections-grid">
+            <a href="winter.html" class="collection-tile">
+                <img src="images/covers/Chester Winter (1).png" alt="Chester Winter">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Chester Winter</h2>
+                    <p class="collection-count">4 Pieces</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="gallery-item" data-category="winter">
-                <img src="images/covers/Chester Winter (2).png" alt="Chester Winter 2">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Winter Stillness II</div>
-                    <div class="gallery-item-category">Chester Winter</div>
-                    <button class="buy-btn">Buy Print</button>
+            <a href="summer.html" class="collection-tile">
+                <img src="images/covers/Chester Summer (1).png" alt="Chester Summer">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Chester Summer</h2>
+                    <p class="collection-count">13 Pieces</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="gallery-item" data-category="winter">
-                <img src="images/covers/Chester Winter (5).png" alt="Chester Winter 5">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Frozen Harbor</div>
-                    <div class="gallery-item-category">Chester Winter</div>
-                    <button class="buy-btn">Buy Print</button>
+            <a href="barcart.html" class="collection-tile">
+                <img src="images/covers/BarCart (4).png" alt="Bar Cart">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Bar Cart</h2>
+                    <p class="collection-count">3 Pieces</p>
                 </div>
-            </div>
+            </a>
+        </div>
 
-            <div class="gallery-item" data-category="winter">
-                <img src="images/covers/cover-2.png" alt="Chester Cover">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Chester Essence</div>
-                    <div class="gallery-item-category">Chester Winter</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (1).png" alt="Chester Summer 1">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Summer Light I</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (2).png" alt="Chester Summer 2">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Summer Light II</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (3).png" alt="Chester Summer 3">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Summer Light III</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (4).png" alt="Chester Summer 4">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Coastal Morning</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (7).png" alt="Chester Summer 7">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Harbor Dreams</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (9).png" alt="Chester Summer 9">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Tidal Rhythm</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (11).png" alt="Chester Summer 11">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Sea and Stone</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (12).png" alt="Chester Summer 12">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Evening Tide</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (15).png" alt="Chester Summer 15">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Golden Shore</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (16).png" alt="Chester Summer 16">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Reflections</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (17).png" alt="Chester Summer 17">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Maritime Peace</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (18).png" alt="Chester Summer 18">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Summer Horizon</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="summer">
-                <img src="images/covers/Chester Summer (24).png" alt="Chester Summer 24">
-                <div class="gallery-item-overlay">
-                    <div class="gallery-item-title">Sunset Harbor</div>
-                    <div class="gallery-item-category">Chester Summer</div>
-                    <button class="buy-btn">Buy Print</button>
-                </div>
-            </div>
+        <div class="statement">
+            Light. Water. Time. Chester, Nova Scotia through a lens that remembers and reimagines.
         </div>
     </div>
 
-    <div class="about-section" id="about">
-        <h2>About the Artist</h2>
-        <p>
-            Lys Verdan creates painterly photographs that exist between two worlds—the captured moment and the reimagined scene. Working from the rugged coastline of Chester, Nova Scotia, each piece begins with observation: the way light moves across water, how weather transforms landscape, the quiet drama of seasonal change.
-        </p>
-        <p>
-            What follows is transformation. Through meticulous digital manipulation, photographs become paintings. Colors deepen, textures emerge, reality softens into something more visceral, more emotional. The result feels both familiar and dreamlike—coastal Nova Scotia as you've never quite seen it, yet always sensed it could be.
-        </p>
-        <p>
-            This is fine art photography for those who seek something beyond documentation. Each limited edition print invites you to see the maritime landscape through an artist's eye, where every frame is both a photograph and a painting, neither and both at once.
-        </p>
-    </div>
-
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close">&times;</button>
-        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">‹</button>
-        <button class="lightbox-nav lightbox-next" id="lightbox-next">›</button>
-        <div class="lightbox-content">
-            <img src="" alt="" id="lightbox-img">
-            <div class="lightbox-info">
-                <div class="lightbox-title" id="lightbox-title"></div>
-                <div class="lightbox-category" id="lightbox-category"></div>
-                <button class="lightbox-buy-btn">Buy Print</button>
-            </div>
-        </div>
-    </div>
-
-    <footer id="contact">
+    <footer>
         <p>&copy; 2026 Lys Verdan Art. All Rights Reserved.</p>
         <p>Limited Edition Prints Available</p>
         <div class="social-links">
             <a href="https://instagram.com/lysverdanart" target="_blank">Instagram</a>
-            <a href="/cdn-cgi/l/email-protection#b3d0dcddc7d2d0c7f3dfcac0c5d6c1d7d2ddd2c1c79dd0dcde">Email</a>
+            <a href="mailto:contact@lysverdanart.com">Email</a>
         </div>
     </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                galleryItems.forEach((item, index) => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                        item.style.animation = 'none';
-                        setTimeout(() => {
-                            item.style.animation = `fadeIn 0.6s ease ${index * 0.1}s forwards`;
-                        }, 10);
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxTitle = document.getElementById('lightbox-title');
-        const lightboxCategory = document.getElementById('lightbox-category');
-        const lightboxClose = document.getElementById('lightbox-close');
-        const lightboxPrev = document.getElementById('lightbox-prev');
-        const lightboxNext = document.getElementById('lightbox-next');
-
-        let currentImageIndex = 0;
-        let visibleImages = [];
-
-        function updateVisibleImages() {
-            visibleImages = Array.from(galleryItems).filter(item => {
-                const style = window.getComputedStyle(item);
-                return style.display !== 'none';
-            });
-        }
-
-        galleryItems.forEach((item) => {
-            const itemImg = item.querySelector('img');
-            itemImg.addEventListener('click', () => {
-                updateVisibleImages();
-                currentImageIndex = visibleImages.indexOf(item);
-                openLightbox(item);
-            });
-        });
-
-        function openLightbox(item) {
-            const img = item.querySelector('img');
-            const title = item.querySelector('.gallery-item-title').textContent;
-            const category = item.querySelector('.gallery-item-category').textContent;
-
-            lightboxImg.src = img.src;
-            lightboxTitle.textContent = title;
-            lightboxCategory.textContent = category;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function showNextImage() {
-            currentImageIndex = (currentImageIndex + 1) % visibleImages.length;
-            openLightbox(visibleImages[currentImageIndex]);
-        }
-
-        function showPrevImage() {
-            currentImageIndex = (currentImageIndex - 1 + visibleImages.length) % visibleImages.length;
-            openLightbox(visibleImages[currentImageIndex]);
-        }
-
-        lightboxClose.addEventListener('click', closeLightbox);
-        lightboxNext.addEventListener('click', showNextImage);
-        lightboxPrev.addEventListener('click', showPrevImage);
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                closeLightbox();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'Arro
+</body>
+</html>
