@@ -1,1 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Collections - Lys Verdan Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html, body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        header {
+            padding: 60px 40px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            padding: 30px 40px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        nav a:hover {
+            color: #999;
+        }
+
+        .collections-container {
+            padding: 80px 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           COLLECTIONS GRID - EASY TO ADD NEW ONES
+           ============================================ */
+        
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        /* ============================================
+           TO ADD A NEW COLLECTION:
+           1. Copy from <!-- COLLECTION START --> to <!-- COLLECTION END -->
+           2. Paste it after the last collection
+           3. Change these 3 things:
+              - href="your-new-page.html"
+              - src="images/covers/YourNewImage.png"
+              - Collection Title and Piece count
+           ============================================ */
+
+        .collection-tile {
+            position: relative;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .collection-tile:hover {
+            transform: scale(1.02);
+        }
+
+        .collection-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: filter 0.3s ease;
+        }
+
+        .collection-tile:hover img {
+            filter: brightness(1);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .collection-title {
+            font-size: 1.8rem;
+            font-weight: 200;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .collection-count {
+            font-size: 0.85rem;
+            color: #999;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 40px 60px;
+            border-top: 1px solid #222;
+            margin-top: 100px;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .collections-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+
+            nav a {
+                display: block;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Collections</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="collections-container">
+        <div class="collections-grid">
+            
+            <!-- COLLECTION START - Chester Winter -->
+            <a href="winter.html" class="collection-tile">
+                <img src="images/covers/Chester Winter (1).png" alt="Chester Winter">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Chester Winter</h2>
+                    <p class="collection-count">4 Pieces</p>
+                </div>
+            </a>
+            <!-- COLLECTION END -->
+
+            <!-- COLLECTION START - Chester Summer -->
+            <a href="summer.html" class="collection-tile">
+                <img src="images/covers/Chester Summer (1).png" alt="Chester Summer">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Chester Summer</h2>
+                    <p class="collection-count">13 Pieces</p>
+                </div>
+            </a>
+            <!-- COLLECTION END -->
+
+            <!-- COLLECTION START - Bar Cart -->
+            <a href="barcart.html" class="collection-tile">
+                <img src="images/covers/BarCart (4).png" alt="Bar Cart">
+                <div class="collection-overlay">
+                    <h2 class="collection-title">Bar Cart</h2>
+                    <p class="collection-count">3 Pieces</p>
+                </div>
+            </a>
+            <!-- COLLECTION END -->
+
+            <!-- 
+            ============================================
+            ADD NEW COLLECTIONS BELOW THIS LINE
+            Just copy a COLLECTION START to END block above, 
+            paste it here, and change the 3 things mentioned
+            ============================================
+            -->
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lys Verdan Art. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
