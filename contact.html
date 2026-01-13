@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Contact - Lys Verdan Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        html, body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        header {
+            padding: 60px 40px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 200;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            padding: 30px 40px;
+            text-align: center;
+            border-bottom: 1px solid #222;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        nav a:hover {
+            color: #999;
+        }
+
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 80px 40px 120px;
+            text-align: center;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #ccc;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .contact-link {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #999;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px 40px 60px;
+            border-top: 1px solid #222;
+        }
+
+        footer p {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #999;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 6px;
+            }
+
+            nav a {
+                display: block;
+                margin: 15px 0;
+            }
+
+            .contact-intro {
+                font-size: 1rem;
+            }
+
+            .contact-link {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contact</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="collections.html">Collections</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="contact-container">
+        <p class="contact-intro">
+            For inquiries about prints, commissions, or collaborations.
+        </p>
+
+        <div class="contact-methods">
+            <div class="contact-item">
+                <div class="contact-label">Email</div>
+                <a href="mailto:contact@lysverdanart.com" class="contact-link">contact@lysverdanart.com</a>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-label">Instagram</div>
+                <a href="https://instagram.com/lysverdanart" target="_blank" class="contact-link">@lysverdanart</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Lys Verdan Art. All Rights Reserved.</p>
+        <p>Limited Edition Prints Available</p>
+        <div class="social-links">
+            <a href="https://instagram.com/lysverdanart" target="_blank">Instagram</a>
+            <a href="mailto:contact@lysverdanart.com">Email</a>
+        </div>
+    </footer>
+</body>
+</html>
